@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 1. 创建类 class 
+    class Star{
+      job='star'
+      constructor(uname,age){
+        this.uname = uname
+        this.age = age
+      }
+      sayHi(){
+        console.log(this.uname,'hello');
+      }
+    }
+
+    // 2. 创建实例
+    var ldh = new Star('ldh',20)
+    var zxy = new Star('zxy',19)
+    console.log(ldh);
+    console.log(zxy);
+    ldh.sayHi()
+  </script>
+</body>
+</html>

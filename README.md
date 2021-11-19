@@ -58,7 +58,7 @@
 
 ### 浏览器是如何工作的
 
-![](C:\Users\victo\Desktop\source\JavaScript高级\img\浏览器工作流程.png)
+![](./img/浏览器工作流程.png)
 
 [^User Interface]: 用户界面，我们看到的浏览器。
 [^Browser engine]: 浏览器引擎，用来查询和操作渲染引擎。
@@ -362,11 +362,11 @@ ECMAScript-262 把对象定义为：**无序属性的集合，其属性可以包
 
 ### 原型三角关系
 
-![](C:\Users\victo\Desktop\source\JavaScript高级\img\构造函数、实例、原型之间的关系.png)
+![](./img/构造函数、实例、原型之间的关系.png)
 
 ### 原型链
 
-![](C:\Users\victo\Desktop\source\JavaScript高级\img\原型链.png)
+![](./img/原型链.png)
 
 s1对象的原型对象的原型对象 = Object构造函数的原型对象
 ```js
@@ -644,13 +644,13 @@ console.dir(s1);
   console.dir(t1); // 输出结果见下图
 ```
 
-<img src="C:\Users\victo\Desktop\source\JavaScript高级\img\组合继承.jpg" style="zoom: 67%;" />
+<img src="./img/组合继承.jpg" style="zoom: 67%;" />
 
 - 组合继承，原型三角图：
 
-  <img src="C:\Users\victo\Desktop\source\JavaScript高级\img\组合继承三角图1.jpg" style="zoom:50%;" />
+  <img src="./img/组合继承三角图1.jpg" style="zoom:50%;" />
 
-  <img src="C:\Users\victo\Desktop\source\JavaScript高级\img\组合继承三角图2.jpg" style="zoom:50%;" />
+  <img src="./img/组合继承三角图2.jpg" style="zoom:50%;" />
 
 
 - 将贪吃蛇中蛇对象和食物对象的width和height利用组合继承改造后发现，代码量变多了，变得更复杂了。我们可以总结，一般在做网页特效，我们不会使用继承。而继承更多被使用在**写框架**的时候。
@@ -920,7 +920,7 @@ setTimeout(function(){
 console.log('over')
 ```
 以上代码输出结果依次为start, over, timeout，因为定时器执行时会先把里面的函数放到**任务队列**里，等**执行栈**执行完毕再处理任务队列中的函数。
-<img src="C:\Users\victo\Desktop\source\JavaScript高级\img\setTimeout的执行过程.jpg" style="zoom:67%;" />
+<img src="./img/setTimeout的执行过程.jpg" style="zoom:67%;" />
 
 
 - 代码改造
@@ -954,15 +954,77 @@ console.log('end')
 
 ### 代码思考
 
-<img src="C:\Users\victo\Desktop\source\JavaScript高级\img\代码思考1.jpg" style="zoom: 50%;" />
+<img src="./img/代码思考1.jpg" style="zoom: 50%;" />
 
-<img src="C:\Users\victo\Desktop\source\JavaScript高级\img\代码思考2.jpg" style="zoom:50%;" />
-
-### 
-
-### 函数递归
+<img src="./img/代码思考2.jpg" style="zoom:50%;" />
 
 
 
+## ES6中的类
 
+### 基本语法
+
+- 创建类
+  语法：
+  ```js
+  class Name {
+    // class body
+  }
+  ```
+
+- 创建实例(必须使用new实例化对象)
+  ```js
+  var xx = new name()
+  ```
+
+注意事项：
+1. 类里面的函数不需要写function
+2. 类中的成员不需要加逗号分隔
+
+### 类constructor 构造函数
+
+  constructor()方法是类的构造函数（默认方法），**用于传递参数，返回实例对象**，通过new命令生成对象实例时，自动调用该方法。如果没有显示定义，类内部会自动给我们创建一个constructor()
+  ```js
+  class Star{
+      job='star'
+      constructor(uname,age){
+        this.uname = uname
+        this.age = age
+      }
+    }
+  ```
+
+### 类的继承
+
+利用extends和super实现类的继承
+
+super关键字用于访问和调用对象父类上的函数，可以调用父类的构造函数，也可调用父类的普通函数。
+
+注意：子类如果在构造函数中使用super，如果同时使用了this，必须先写super，再用this。
+
+- 语法：
+  ```js
+  class Father{
+    // 父类
+    hi()
+  }
+
+  class Son extends Father{   // extends ：使子类继承父类的属性和方法
+    constructor(x,y){
+      super(x,y) // 将参数传给父类的constructor
+      this.x = x
+    }
+    hi(){
+      super.hi() // 调用父类的hi函数
+    }
+  }
+  ```
+
+继承中，如果实例化子类输出一个方法，先在子类中查找，如果没有，再查找父类。（就近原则）
+
+
+### 类和对象的三个注意点：
+
+1. 在ES6中类没有变量提提升，所以必须先定义类，才能通过类实例化对象
+2. 类里面的共有的属性和方法一定要加this使用
 
