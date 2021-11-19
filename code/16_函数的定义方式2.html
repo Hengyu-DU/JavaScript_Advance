@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 3 new Function()
+    // 特点：1.要写在字符串里
+    // 2.运行速度较前两种较慢，因此不推荐
+
+   
+    var fn = new Function('var name = "张三"; console.log(name) ')
+    fn()
+    console.dir(fn); // 但由此可知，函数也是一个对象
+
+    // 传递参数的写法
+    var fnn = new Function('a','b','console.log(a+b)')
+    fnn(1,2)
+  </script>
+</body>
+</html>

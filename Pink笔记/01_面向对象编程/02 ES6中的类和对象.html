@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        面向对象的思维特点：
+        1. 抽取（抽象）对象共用的属性和行为
+        组织（封装）成一个类（模板）
+        2. 对类进行实例化，获取类的对象
+
+        面向对象编程我们考虑的是有哪些对象，按照面向对象的思维特点，
+        不断地创建对象、使用对象、指挥对象
+
+        【对象】
+        在JS中，对象是一组无序的相关属性和方法的集合，所有的事物都是对象
+
+        对象是由属性（常用名词表示）和方法（常用动词表示）组成的
+
+        【类】
+        在ES6中新增加了类的概念，使用class声明一个类
+        类抽象了对象的公共部分，泛指某一大类
+        对象特指，是通过类实例化产生的
+
+        语法：
+
+        class name{
+            // class body
+        }
+
+        创建实例：
+
+        var xx = new name()
+     -->
+
+     <script>
+         class Star{
+            // 创建一个类
+            
+            constructor(uname, age){
+                this.uname = uname;
+                this.age = age
+
+            }
+            // constructor()方法是类的构造函数（默认方法），
+            // 用于传递参数，返回实例对象，通过new命令生成实例对象时，
+            // 自动调用该方法。如果没有显示定义，类内部会自动给我们
+            // 创建一个constructor()
+         }
+
+         var ldh = new Star('刘德华', 18)
+         console.log(ldh);
+         var lxh = new Star('刘雪华', 19)
+         console.log(lxh);
+     </script>
+</body>
+</html>

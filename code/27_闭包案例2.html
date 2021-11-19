@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  我是字体的演示
+
+  <button id="btn1">按钮1</button>
+  <button id="btn2">按钮2</button>
+  <button id="btn3">按钮3</button>
+
+  <script>
+    var btn1 = document.getElementById('btn1')
+    var btn2 = document.getElementById('btn2')
+    var btn3 = document.getElementById('btn3')
+
+    // btn1.onclick = function(){
+    //   document.body.style.fontSize = '16px'
+    // }
+    // btn2.onclick = function(){
+    //   document.body.style.fontSize = '20px'
+    // }
+    // btn3.onclick = function(){
+    //   document.body.style.fontSize = '30px'
+    // }
+
+    function makeFunction(size){
+      return function(){
+        document.body.style.fontSize = size + 'px'
+      }
+    }
+
+    btn1.onclick = makeFunction(16)
+    btn2.onclick = makeFunction(20)
+    btn3.onclick = makeFunction(30)
+  </script>
+</body>
+</html>

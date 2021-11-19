@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 继承：类型和类型之间的关系。
+    // 继承的目的：把子类型中共同的成员提取到父类中，代码重用。
+    // 学生管理系统：学生类型 老师类型 => Person类型
+
+
+    function Person(){  // 父类型
+      this.name = 'Zhang'
+      this.age = 18
+      this.sex = '男'
+    }
+
+    function Student(){  // 子类型
+      this.score = 100
+    }
+    
+    Student.prototype = new Person()
+    Student.prototype.constructor = Student  
+    // 当改变prototype时，一定要给constructor赋值
+
+
+    var s1 = new Student()
+    console.log(s1.constructor) // Student
+    console.dir(s1);
+
+    function Teacher(){
+      this.salary = 3000
+    }
+
+    // 原型继承：无法设置函数的参数（缺点，不实用）
+    
+  </script>
+</body>
+</html>

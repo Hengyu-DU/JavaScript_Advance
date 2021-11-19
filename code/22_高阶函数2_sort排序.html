@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+
+    var arr = [35, 1, 6, 20, 100, 23, 34, 12, 45, 1, 50, 13]
+    arr.sort(function(a,b){
+      return a - b
+    })
+    console.log(arr); // 从小到大排列
+
+    // arr.mySort()
+    // var arr = [35, 1, 6, 20, 100]
+
+    Array.prototype.mySort = function(fn){
+      for (var i = 0 ; i < this.length - 1 ; i++){
+        for(var j = 0 ; j < this.length - i - 1; j++){
+          if(fn(this[j],this[j+1]) > 0){
+            var tmp = this[j]
+            this[j] = this[j+1]
+            this[j+1] = tmp
+          }
+        }
+      }
+    }
+    arr.mySort(function(a, b){
+      return b - a ;
+    })
+
+    console.log(arr);
+
+  </script>
+</body>
+</html>

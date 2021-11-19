@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 组合继承： 借用构造函数 + 原型继承
+
+    function Person(name,age,sex){
+      this.name = name
+      this.age = age
+      this.sex = sex
+    }
+
+    Person.prototype.sayHi = function (){
+      console.log('大家好，我是' + this.name);
+    }
+
+    function Student(name,age,sex,score){
+      // 借用构造函数
+      Person.call(this, name, age, sex)
+      this.score = score
+    }
+
+    Student.prototype = Person.prototype
+    Student.prototype.constuctor = Student
+
+    // 学生特有的方法
+    Student.prototype.exam = function(){
+      console.log('考试');
+    }
+
+
+    // var s1 = new Student('张三',18,'男',100)
+    // console.dir(s1)
+
+    // var p1 = new Person('李斯',18,'男')
+    // console.log(p1);// 发现person居然可以有exam方法
+
+    function Teacher(name,age,sex,salary){
+      // 借用构造函数
+      Person.call(this, name, age, sex)
+      this.salary = salary;
+    }
+
+    Teacher.prototype = Person.prototype
+    Teacher.prototype.constuctor = Teacher
+    
+    var t1 = new Teacher('王五',30,'男',10101010)
+    console.dir(t1);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function Student(name,age,sex){
+    this.name = name
+    this.age = age
+    this.sex = sex
+  }
+
+  Student.prototype.sayHi = function () {
+    console.log("Hello, I'm" + this.name)
+  }
+
+  console.dir(Student.__proto__.constructor);
+  console.dir(Student.constructor.__proto__);// Function() 对象
+  console.dir(Student.constructor);// Function() 对象
+
+  // 通过Student构造函数，创建的对象，可以访问Student.prototype中的成员
+  var s1 = new Student('A',12,'male')
+  var s2 = new Student('B',12,'female')
+
+  s1.sayHi()
+  s2.sayHi()
+  
+  console.log(s1.sayHi === s2.sayHi) // true,说明占用的是同一块儿内存空间
+
+  </script>
+</body>
+</html>

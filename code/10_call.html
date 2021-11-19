@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function fn(x,y){
+      console.log(this);
+      console.log(x + y);
+    }
+
+    // window.fn(5,6)
+
+    var o = {
+      name:'zs'
+    }
+
+    // bind() 改变函数的this，并返回一个新的函数，但不调用
+
+    var f = fn.bind(o, 1, 2) // 后面再接两个参数
+
+    f() // o  3
+
+
+    // call() 改变函数中的this，直接调用函数
+
+    // fn.call() 直接使用
+    // call(this指向, 其他参数)
+    fn.call(o, 1, 2) // o 3 
+    
+  </script>
+</body>
+</html>

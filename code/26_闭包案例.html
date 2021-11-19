@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <ul id="heroes">
+    <li>安琪拉</li>
+    <li>李白</li>
+    <li>诸葛亮</li>
+    <li>狄仁杰</li>
+  </ul>
+
+  <script type="text/javascript">
+    
+    /* 实现方式一
+    
+    // 1 给li注册点击事件
+    var heroes = document.getElementById('heroes')
+    var list = heroes.children
+    for ( var i = 0; i < list.length; i ++){
+      var li = list[i]
+      li.index = i // 将每次的li保存起来
+      li.onclick = function(){
+        // 2 点击li时输出当前li对应的索引
+        console.log(this.index);
+      }
+    } */
+
+    // 方式二
+    var heroes = document.getElementById('heroes')
+    var list = heroes.children
+    for ( var i = 0; i < list.length; i ++){
+      var li = list[i]
+
+      ;(function(i){
+        li.onclick = function(){
+          console.log(i); // i存储在外层函数中
+          // 形成闭包时，其实外层函数的作用域延展了，没有释放内存，性能降低了
+        }
+      })(i)
+    } 
+
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 借用构造函数
+    function Person(name,age,sex){  // 父类型
+      this.name = name
+      this.age = age
+      this.sex = sex
+    }
+
+    Person.prototype.sayHi = function(){
+      console.log(this.name);
+    }
+
+    // 子类型
+    function Student(name, age, sex, score){  // 子类型
+      Person.call(this,name,age,sex)
+      this.score = score
+    }
+
+    var s1 = new Student('zs',18,'male',100)
+    console.dir(s1)
+
+  </script>
+</body>
+</html>

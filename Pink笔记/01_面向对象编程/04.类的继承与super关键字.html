@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+        继承：子类可以继承父类的一些属性和方法
+
+        语法：
+        class Father{  
+            // 父类
+        }
+        class Son extends Father{
+            //子类继承父类
+        }
+
+        [super关键字]
+        super关键字用于访问和调用对象父类上的函数，
+        可以调用父类的构造函数，
+        也可以调用父类的普通函数。
+     -->
+
+     <script>
+/*      class Father{
+             constructor(){
+            }
+            money(){
+                console.log(100);
+            }
+        }
+        class Son extends Father {
+        }
+
+        var son = new Son()
+        son.money()  // 100 */
+
+        class Father {
+            constructor(x, y){
+                this.x = x
+                this.y = y
+            }
+
+            sum(){
+                console.log(this.x + this.y);
+            }
+        }
+        
+        class Son extends Father{
+            constructor(x, y){
+                // this.x = x
+                // this.y = y
+                super(x, y) // 调用了父类中的构造函数
+            }
+        }
+
+        var son = new Son(20.02,30.04)
+        son.sum()
+    </script>
+
+</body>
+</html>

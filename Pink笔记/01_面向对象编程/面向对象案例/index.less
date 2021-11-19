@@ -1,0 +1,134 @@
+html{
+    height: 100%;
+}
+
+body{
+    background:url(./pic/synthesizer_piano_musical_instrument_115284_2560x1600.jpg) center/cover;
+}
+
+main{
+    font-family: '等线', consolas;
+    width: 80%;
+    margin: 100px auto;
+    opacity: 90%;
+    
+    h1{
+        text-align: center;
+        // font-weight: bold;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+    }
+}
+
+
+.tabbox{
+    background-color: rgba(255, 255, 255, 0.945);
+    height: 300px;
+    border: #273136 3px solid;
+    border-radius: 8px;
+
+    .boxbar{
+        height: 30px;
+        line-height: 30px;
+        border-bottom: 2px rgb(82, 79, 79) solid;
+        position: relative;
+        text-align: center;
+        user-select: none; //禁止用户选中
+
+        ul{
+            float: left;
+            max-width: 94%;
+            display: flex;
+            justify-content: flex-start;
+            
+            li{
+                width: 150px;
+                font-size: 15px;
+                position: relative;
+                height:30px;
+                border-right: 2px rgb(82, 79, 79) solid;
+                // height: 31px;
+                flex: initial;
+                background-color: rgba(2, 236, 99, 0.185);
+                text-overflow: ellipsis;
+                overflow:hidden;
+                padding-right: 15px;
+
+                .close{
+                    width: 15px;
+                    height: 15px;
+                    line-height: 15px;
+                    // display: block;
+                    position: absolute;
+                    right: 5px;
+                    top: 8px;
+                    border-radius:50%;
+                    background-color: rgba(85, 86, 89, 0.062);
+                    color:rgba(128, 128, 128, 0.568);
+                    font-weight: bold;
+                    cursor: pointer;
+                }
+                
+                .close:hover{
+                    background-color: rgba(85, 86, 89, 0.199);
+                }
+                .close:active{
+                    background-color: rgba(85, 86, 89, 0.4);
+                }
+            }
+
+            .activetab{
+                border-bottom:2px white solid ;
+                background-color: white;
+                
+            }
+        }
+
+        .addtab{
+            // position: absolute;
+            margin-left: 0.5%;
+            margin-top: 5px;
+            float: left;
+            width: 20px;
+            height: 20px;
+            border-radius: 30%;
+            line-height: 20px;
+            font-weight:bold;
+            font-size: 19px;
+            color: rgb(67, 67, 165);
+            cursor: pointer;
+        }
+        .addtab:hover{
+            background-color: rgba(85, 86, 89, 0.199);
+        }
+        .addtab:active{
+            background-color: rgba(85, 86, 89, 0.4);
+        }
+    }
+
+    .content{
+        section{
+            display: none;
+            margin: 10px 10px;
+            height: 200px;
+
+            span{
+                display: block;
+                height: 100%;
+
+                input{
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+
+        .activecont{
+            display: block;
+        }
+    }
+
+    
+}
+

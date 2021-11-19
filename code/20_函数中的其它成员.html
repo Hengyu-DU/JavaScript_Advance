@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    function fn(x,y){
+      // 【需要掌握的】 函数内部的私有变量arguments
+      console.log(arguments);
+
+      // 伪数组 获取到的是函数的实参
+      console.log(fn.arguments);
+      // 函数的调用者，如果在全局范围内caller是null
+      console.log(fn.caller);
+      // 函数的名称 字符串类型
+      console.log(fn.name);
+      // 函数的形参个数
+      console.log(fn.length);
+    }
+
+    console.dir(fn);
+
+    function foo(){
+      fn(1,2,3)
+    }
+
+    foo()
+
+    // arguments 
+
+    function max(){
+      // 当函数的参数个数不固定的时候
+      // 在函数内部可以通过arguments获取到实际传过来的参数
+      var max = arguments[0]
+      for (var i = 0 ; i < arguments.length; i++){
+        if(max < arguments[i]){
+          max = arguments[i]
+        }
+      }
+      return max
+    }
+
+    console.log(max(1,2,3,999));
+
+
+  </script>
+</body>
+</html>

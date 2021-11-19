@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 高阶函数： 函数作为返回值的时候
+
+    // 写一个函数，生成1-10之间的随机整数
+
+    // function getRandom(){
+    //   return Math.floor(Math.random() * 10) +1
+    // }
+    // console.log(getRandom());
+
+    // 第一次调用生成随机数，以后每次调用都返回第一次的随机值
+
+      var random
+    function getRandom(){
+      // 生成1-10之间的随机整数:
+      random = Math.floor(Math.random() * 10) +1
+      console.log('test random:',random);
+      return function(){
+        return random
+      }
+    }
+
+    var fn = getRandom()
+    // getRandom()
+    // console.log(fn);
+    console.log(fn()); 
+    console.log(fn()); 
+    var fn2 = getRandom()
+    console.log(fn2());
+    console.log(fn2());
+    // console.log(fn());   // 不懂。。。。
+
+    /* ------ */
+    function getSum(n){
+      return function(m){
+        return n + m
+      }
+    }
+
+    var fn100 = getSum(100)
+    var fn1000 = getSum(1000)
+    console.log(fn100(7)); // 107
+    console.log(fn1000(7)); // 1007
+
+  </script>
+</body>
+</html>
