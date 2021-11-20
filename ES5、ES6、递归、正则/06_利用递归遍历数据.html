@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    var data = [{
+      id:1,
+      name:'家电',
+      goods:[{
+        id:11,
+        gname:'冰箱',
+        goods:[{
+          id:111,
+          gname:'海尔冰箱'
+        },{
+          id:112,
+          gname:'美的冰箱'
+        }]
+      },{
+        if:12,
+        gname:'洗衣机'
+      }]
+    },{
+      id:2,
+      name:'服饰'
+    }]
+
+    var count = 1
+    function fn(n,arr){
+      var o 
+      arr.some(function(value){
+        if(value.id == n){
+          o = value
+          return value
+        } else if ( value.id == n.toString().slice(0,count)){
+          count++
+          o = fn(n,value.goods)
+        }
+      })
+      count = 1
+      return o
+    }
+
+    console.log(fn(1,data))
+    console.log(fn(11,data))
+    console.log(fn(111,data))
+    console.log(fn(112,data))
+
+    var str = 111
+    var str1 = str.toString().slice(0,2)
+    console.log(str1);
+    // 我们想要输入id号，就可以返回数据对象
+  </script>
+</body>
+</html>

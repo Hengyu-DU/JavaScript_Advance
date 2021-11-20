@@ -824,6 +824,18 @@ function fn(x,y){
     console.log(max(1,2,3,999)); // 999
 ```
 
+### 严格模式
+
+JavaScript除了提供正常模式外，还提供了**严格模式（strict mode）**。ES5的严格模式是采用具有限制性JavaScript变体的一种方式，即在严格的条件下运行JS代码。
+
+严格模式在IE10以上版本的浏览器中才会被支持，旧版本浏览器中会被忽略。
+
+严格模式对正常的 JavaScript语义做了一些更改：
+1. 消除了 Javascript语法的一些不合理、不严谨之处，了一些怪异行为
+2. 消除代码运行的一些不安全之处，保证代码运行的安全。
+3. 提高编译器效率，增加运行速度。
+4. 禁用了在 ECMAScript的未来版本中可能会定义的一些语法，为未来新版本的 Javascript做好铺垫。比如一些保留字如: class，enum， export， extends，import，super不能做变量名。
+
 
 ### 高阶函数
 高阶函数：
@@ -961,8 +973,127 @@ console.log('end')
 <img src="./img/代码思考2.jpg" style="zoom:50%;" />
 
 
+### 递归函数
+
+递归函数：函数内部自己调用自己，这个函数就是递归函数。
+
+```js
+    var num = 1
+
+    function fn(){
+      console.log('我要打印',num)
+      if (num == 6){
+        return // 递归函数里必须加推出条件，否则会造成栈溢出。
+      }
+      num++
+      fn()
+    }
+
+    fn()
+```
+
+#### 利用递归求1-n的阶乘
+
+```js
+   function fn(n){
+      if(n == 1){
+        return 1
+      }
+      return n * fn(n-1)
+    }
+    console.log(fn(3)); // 6
+    console.log(fn(4)); // 24
+```
+
+#### 利用递归求斐波那契数列
+
+斐波那契数列（兔子数列），1、1、2、3、5、8、13、21、34... ... 
+用户输入一个数字 n 就可以求出这个数字对应的兔子序列值。
+
+```js
+    function fn(n){
+      if(n == 1){
+        return 1
+      } else if (n <= 0){
+        return 0
+      }
+      return fn(n-1) + fn(n-2)
+    }
+
+    console.log(fn(1));
+    console.log(fn(2));
+    console.log(fn(3));
+    console.log(fn(4));
+```
+
+
+
+#### 浅拷贝（ES6）和深拷贝
+
+浅拷贝只是拷贝一层，更深层次对象级别的只拷贝引用。
+深拷贝拷贝多层，每一级别数据都会拷贝。
+
+- 浅拷贝
+```js
+  var obj = {
+    id: 1,
+    name:'Hengyu',
+    msg:{
+      info:100
+    }
+  }
+
+  var copy = {}
+  for (var k in obj){  // 利用for in遍历实现浅拷贝
+    copy[k] = obj[k]
+  }
+
+  console.log(copy) // 和obj一模一样,但msg只拷贝了地址
+  copy.msg.info = 10
+  console.log(obj) // msg也被改变了
+```
+
+ES6 提供了一个新方法用于浅拷贝**Object.assign()** ：
+```js
+  Object.assign(copy,obj)
+```
+
+- 深拷贝
+```js
+  var obj = {
+    id: 1,
+    name:'hengyu', // 简单数据类型
+    msg:{ info:100 }, // 复杂数据类型
+    color:['navy','wheat'] // 复杂数据类型
+  } 
+  
+  var copy = {}
+
+  function deepCopy(newObj, oldObj){
+    for (var k in oldObj){
+      var item = oldObj[k]
+      if (item instanceof Array){ // 复杂数据类型
+        newObj[k] = []
+        deepCopy(newObj[k],item)
+      } else if (item instanceof Object){ // 复杂数据类型
+        newObj[k] = {}
+        deepCopy(newObj[k],item)
+      } else { // 简单数据类型
+        newObj[k] = item
+      }
+    }
+  }
+
+  deepCopy(copy,obj)
+  console.log(copy)
+```
+
+
 
 ## 六、ES6中的类
+
+ES6之前通过**构造函数+原型**实现面向对象编程
+ES6通过**类**实现面向对象编程
 
 ### 基本语法
 
@@ -1029,4 +1160,154 @@ super关键字用于访问和调用对象父类上的函数，可以调用父类
 
 1. 在ES6中类没有变量提提升，所以必须先定义类，才能通过类实例化对象
 2. 类里面的共有的属性和方法一定要加this使用
+3. 类里的this指向问题
+
+```js
+class Star{
+  constructor(){
+    console.log(this)
+    // constructor里的this指的是创建的实例对象
+  }
+  foo(){
+    console.log(this)
+    // 函数中的this指的是调用该函数的实例对象
+  }
+}
+
+var s1 = new Star()
+```
+
+### 类的本质
+
+类的本质其实还是一个函数，我们也可以简单的认为，类就是构造函数的另外一种简单的写法
+
+ES6之前通过**构造函数+原型**实现面向对象编程
+
+1. 构造函数有原型对象prototype
+2. 构造函数原型对象里有constructor指向构造函数本身
+3. 构造函数可以通过原型对象添加共有方法
+4. 构造函数创建的实例对象有__proto__，指向函数的原型对象
+
+ES6通过**类**实现面向对象编程
+
+ES6的类的绝大部分功能，ES5都能做到，新的class写法只是让原型对象的写法更清晰，更像面向对象编程的语法而已。
+
+所以ES6的类其实就是**语法糖**。
+
+
+## 七、ES5中的新增方法概述
+
+### 数组新增方法
+
+forEach map filter some every
+
+#### 1.forEach 
+
+作用：迭代（遍历）数组
+
+```js
+  var arr = [1,2,3]
+  var sum = 0
+  arr.forEach(function(value,index,array){
+    console.log('每个数组元素' + value)
+    console.log('每个数组元素的索引号' + index)
+    console.log('每个数组元素' + array)
+    sum += value
+  })
+  console.log(sum) // 6
+```
+#### 2.filter
+
+作用：filter()方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素，主要用于**筛选数组**。
+
+**注意：它直接返回一个新数组，因此需要一个变量来接**
+
+```js
+  var arr = [12, 66, 4, 88, 3, 7]
+  var newArr = arr.filter(function(value, index，arr){
+    return value >= 20
+  })
+  console.log(newArr) // [66, 88]
+```
+
+#### 3.map
+
+作用：map()方法创建一个新数组，数组中的元素是通过对原数组的每个元素分别执行函数得到的。
+
+**注意：它直接返回一个新数组，因此需要一个变量来接**
+
+
+#### 4.some
+
+作用：some()方法用于检测数组中的元素是否满足指定条件，通俗来说即查找数组中是否有满足条件的元素。
+
+注意：
+1. **它的返回值是布尔值**，如果查找到满足条件的元素，即返回true，否则返回false。
+2. 当查找到第一个满足条件的元素时，就立刻终止循环，不再继续查找
+
+```js
+var arr = [10,30,4]
+var flag = arr.some(function(value){
+  return value < 3
+})
+console.log(flag) // false
+```
+
+- forEach 和 some 的区别：
+  forEach、filter、map中的return true不会终止迭代
+  **some中的return true会终止迭代，如果需要在数组中查找唯一的元素，some效率更高**
+
+#### 5.every
+
+与some类似，但用于判断是否数组中所有元素都满足指定条件，返回布尔值。
+
+
+### 字符串新增方法
+
+#### trim
+
+trim()方法会从一个字符串的**两端**删除空白字符，且不影响字符串本身，返回的是一个新的字符串。
+
+```js
+  var str = '  andy  '
+  console.log(str)
+  var str1 = str.trim()
+  console.log(str1) //  andy
+```
+
+### 对象新增方法
+
+#### Object.defineProperty() 
+
+作用：定义对象中新属性或修改原有的属性
+参数：
+  - obj：必需。目标对象
+  - prop：必需。需定义或修改的属性的名字
+  - descriptor：必须。目标属性所拥有的特性
+
+第三个参数descriptor需要用对象形式来写：
+  - value：设置属性的值，默认为undefined
+  - writable：值是否可以重写， true|默认false
+  - enumerabke: 目标属性是否可以被枚举（遍历）， true|默认false
+  - configurable: 目标属性是否可以被删除或是否可以再次修改特性  true|默认false
+
+```js
+var obj = {
+  id:1
+  name:'xiaomi'
+  price:1000
+}
+obj.defineProperty(obj,'price',{
+  value:9.9
+  writable:false
+})
+obj.defineProperty(obj,'address',{
+  value:'12121212121121221212'
+  enumerable:false  // 这样可以把该属性隐藏起来，无法遍历出来
+  configurable:false
+})
+console.log(obj.keys(obj)) // 'id' 'name' 'price'
+delete obj.address // 删不掉
+```
+
 
