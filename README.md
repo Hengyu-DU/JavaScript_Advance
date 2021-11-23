@@ -1225,6 +1225,26 @@ class Star{
 var s1 = new Star()
 ```
 
+### class的set和get
+```js
+    // get 和 set
+    class Phone{
+      get price(){ // 通常用来对对象的动态属性进行封装
+        console.log("价格属性被读取了")
+        return 'iloveyou'
+      }
+
+      set price(newVal){  // 通常用来对对象的动态属性进行封装
+        console.log("价格属性被修改了");
+      }
+    }
+     
+    let s = new Phone()
+
+    console.log(s.price)
+    s.price = 'free'
+```
+
 ### 类的本质
 
 类的本质其实还是一个函数，我们也可以简单的认为，类就是构造函数的另外一种简单的写法

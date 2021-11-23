@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // get 和 set
+    class Phone{
+      get price(){ // 通常用来对对象的动态属性进行封装
+        console.log("价格属性被读取了")
+        return 'iloveyou'
+      }
+
+      set price(newVal){  // 通常用来对对象的动态属性进行封装
+        console.log("价格属性被修改了");
+      }
+    }
+     
+    let s = new Phone()
+
+    console.log(s.price)
+    s.price = 'free'
+  </script> 
+</body>
+</html>
