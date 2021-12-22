@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script type="text/javascript">
+    // 1. 类的继承
+    class Books{
+    // 父类
+      name = '书'
+
+      constructor(x,y,z){
+        this.category = x
+        this.amount = y
+        // this.extraInfo = z
+      }
+
+      showInfo(){
+        console.log(`类别：${this.category}，数量：${this.amount}，infor：${this.extraInfo}`);
+      }
+
+    }
+      
+    class Novel extends Books{
+      // 子类
+      constructor(x,y,z){
+        super() // 为什么要写super
+        this.category = '小说'
+        this.title = x
+        this.amount = y
+        this.extraInfo = z
+      }
+
+
+      showInfo(){
+        super.showInfo()
+      }
+
+    }
+   
+    let book1 = new Novel('论语',10,'003')
+    console.log(book1);
+    // console.log(book1.__proto__.__proto__.constructor);
+    // book1.showInfo()
+
+    // class Star{
+    //   i = 1
+    //   constructor(x){
+    //     this.x = x
+    //     console.log(this)
+    //     this.foo1 = function(){
+    //       console.log(this.x);
+    //     }
+    //     // constructor里的this指的是创建的实例对象
+    //   }
+    //   foo(){
+    //     console.log(this.i);
+    //     // 函数中的this指的是调用该函数的实例对象
+    //   }
+    // }
+
+    // var s1 = new Star(2)
+    // s1.foo1()
+
+
+  </script>
+</body>
+</html>

@@ -11,21 +11,33 @@
     // 1. 创建类 class 
     class Star{
       job='star'
+      hello = 'yes'
       constructor(uname,age){
         this.uname = uname
         this.age = age
+        this.innerHi = function(){
+          console.log('1',this)
+        }
       }
+      
       sayHi(){
+        console.log('2',this)
         console.log(this.uname,'hello');
+      }
+      funcInProto(){
+        console.log(this)
       }
     }
 
     // 2. 创建实例
     var ldh = new Star('ldh',20)
     var zxy = new Star('zxy',19)
+    
+    
+    ldh.sayHi = 'hello'
     console.log(ldh);
-    console.log(zxy);
-    ldh.sayHi()
+    console.log(zxy)
+
   </script>
 </body>
 </html>

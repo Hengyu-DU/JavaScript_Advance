@@ -22,7 +22,7 @@
 
 Function.constructor.constructor
 
-![img](https://pic3.zhimg.com/80/v2-5e55da48225128b0281dcec72950f93a_1440w.jpg)
+<img src="https://pic3.zhimg.com/80/v2-5e55da48225128b0281dcec72950f93a_1440w.jpg" alt="img" style="zoom: 50%;" />
 
 如上图所示，person1、person2都是对象，对象具有__proto__属性，此隐式原型指向构造此对象的构造函数Person的原型Person.prototype。
 
@@ -34,7 +34,7 @@ Function.constructor.constructor
 
 ### **1.** **__proto__和prototype概要（隐式原型与原型对象）**
 
-![img](https://pic4.zhimg.com/80/v2-abd4882fcf871a08a58c2266eaae952f_1440w.jpg)
+<img src="https://pic4.zhimg.com/80/v2-abd4882fcf871a08a58c2266eaae952f_1440w.jpg" alt="img" style="zoom: 33%;" />
 
 上图，可以看出：
 
@@ -42,13 +42,13 @@ Function.constructor.constructor
 
 构造函数的原型属性Person.prototype指向了原型对象，在原型对象里有共有的方法，所有构造函数声明的实例（这里是person1，person2）都可以共享这些方法（sayName）。
 
-![img](https://pic4.zhimg.com/80/v2-4abd45ff3cc53602c8b1ab4f1e3d3fd7_1440w.jpg)
+<img src="https://pic4.zhimg.com/80/v2-4abd45ff3cc53602c8b1ab4f1e3d3fd7_1440w.jpg" alt="img" style="zoom: 67%;" />
 
 【2】原型对象Person.prototype
 
 Person.prototype保存着实例共享的方法（sayName），有一个指针constructor指回构造函数。
 
-![img](https://pic4.zhimg.com/80/v2-e7e55f78e19dcfc6c24dc0e54991487f_1440w.png)
+<img src="https://pic4.zhimg.com/80/v2-e7e55f78e19dcfc6c24dc0e54991487f_1440w.png" alt="img" style="zoom: 67%;" />
 
 【3】实例
 
@@ -66,27 +66,25 @@ person1和person2是Person这个对象的两个实例，这两个对象也有属
 
 最后，**Object.prototype的__proto__属性指向null**。如下图所示：
 
-![img](https://pic4.zhimg.com/80/v2-a80b9ee9a6407bb12301b1eea8c565ef_1440w.jpg)
+<img src="https://pic4.zhimg.com/80/v2-a80b9ee9a6407bb12301b1eea8c565ef_1440w.jpg" alt="img" style="zoom: 67%;" />
 
 函数Person既有__proto__隐式属性，也有prototype原型对象。那么一般对象有没有prototype属性呢？我们继续看下面案例。
 
 ### **3.** **函数特有prototype属性，对象无**
 
-![img](https://pic2.zhimg.com/80/v2-d7e0915bd14bb3390ba10a86b400ba35_1440w.jpg)
+<img src="https://pic2.zhimg.com/80/v2-d7e0915bd14bb3390ba10a86b400ba35_1440w.jpg" alt="img" style="zoom:67%;" />
 
 由此，可见**对象并不具有prototype属性，只有函数才有prototype属性。**
 
 最后，再通过下列代码帮助大家进一步理解最开始那张图。
 
-![img](https://pic1.zhimg.com/80/v2-741416bd1cad007e3e67de77ba68895c_1440w.png)
+<img src="https://pic1.zhimg.com/80/v2-741416bd1cad007e3e67de77ba68895c_1440w.png" alt="img" style="zoom:67%;" />
 
 ## **四、** **总结**
 
 【1】对象有属性__proto__，指向该对象的构造函数的原型对象。
 
 【2】方法除了有属性__proto__，还有属性prototype，prototype指向该方法的原型对象。
-
-关于原型和原型链，我们后续文章再给大家解析，感兴趣的朋友可以关注我们。
 
 https://zhuanlan.zhihu.com/p/92894937
 
